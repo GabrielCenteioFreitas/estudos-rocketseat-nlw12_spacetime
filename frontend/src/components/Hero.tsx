@@ -1,5 +1,6 @@
 import Image from "next/image"
 import nlwLogo from '../assets/nlw-spacetime-logo.svg'
+import Link from "next/link";
 
 export const Hero = () => {
   return (
@@ -15,9 +16,12 @@ export const Hero = () => {
         </p>
       </div>
 
-      <a className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600" href="">
+      <Link
+        href="/memories/new"
+        className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
+      >
         CADASTRAR LEMBRANÇA
-      </a>
+      </Link>
     </div>
   );
 }
