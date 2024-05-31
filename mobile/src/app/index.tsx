@@ -1,25 +1,11 @@
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
-import * as SecureStore from 'expo-secure-store'
 import { useRouter } from 'expo-router';
-import { styled } from 'nativewind';
+import * as SecureStore from 'expo-secure-store';
 import { useEffect } from "react";
-import { ImageBackground, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
-import {
-  BaiJamjuree_700Bold,
-} from '@expo-google-fonts/bai-jamjuree';
-import {
-  Roboto_400Regular,
-  Roboto_700Bold,
-  useFonts,
-} from '@expo-google-fonts/roboto';
-
-import blurBg from '../assets/bg-blur.png';
 import NLWLogo from '../assets/nlw-spacetime-logo.svg';
-import Stripes from '../assets/stripes.svg';
 import { api } from "../lib/api";
-
-const StyledStripes = styled(Stripes)
 
 const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
@@ -29,12 +15,6 @@ const discovery = {
 
 export default function Index() {
   const router = useRouter();
-
-  const [hasLoadedFonts] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    BaiJamjuree_700Bold,
-  });
 
   const [, response, signInWithGithub] = useAuthRequest(
     {
@@ -71,18 +51,10 @@ export default function Index() {
     }
   }, [response])
 
-  if (!hasLoadedFonts) {
-    return null;
-  }
-
   return (
-    <ImageBackground
-      source={blurBg}
-      className="relative px-8 py-10 flex-1 bg-gray-900 items-center"
-      imageStyle={ { position: 'absolute', left: '-50%' } }
+    <View
+      className="px-8 py-10 flex-1 items-center"
     >
-      <StyledStripes className="absolute left-2" />
-
       <View className="flex-1 items-center justify-center gap-6">
         <NLWLogo />
 
@@ -109,8 +81,6 @@ export default function Index() {
       <Text className="text-center font-body text-sm leading-relaxed text-gray-200">
         Feito com 💜 no NLW da Rocketseat
       </Text>
-
-      <StatusBar barStyle="light-content" translucent />
-    </ImageBackground>
+    </View>
   );
 }
