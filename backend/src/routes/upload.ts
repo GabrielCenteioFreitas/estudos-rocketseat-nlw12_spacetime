@@ -4,6 +4,7 @@ import { createWriteStream } from "fs";
 import { extname, resolve } from "path";
 import { pipeline } from "stream";
 import { promisify } from "util";
+import fs from 'fs';
 
 const pump = promisify(pipeline)
 
@@ -30,9 +31,14 @@ export async function uploadRoutes(app: FastifyInstance){
     const extension = extname(upload.filename)
     
     const fileName = fileId.concat(extension)
+    const uploadsPath = resolve(__dirname, '../../uploads/')
+
+    if (!fs.existsSync(uploadsPath)) {
+      fs.mkdirSync(uploadsPath);
+    }
 
     const writeStream = createWriteStream(
-      resolve(__dirname, '../../uploads/', fileName),
+      resolve(uploadsPath, fileName),
     )
 
     await pump(upload.file, writeStream)
