@@ -8,6 +8,7 @@ import { resolve } from "path"
 import { authRoutes } from './routes/auth'
 import { memoriesRoutes } from './routes/memories'
 import { uploadRoutes } from './routes/upload'
+import { statusRoutes } from './routes/status'
 
 const app = fastify()
 
@@ -26,6 +27,7 @@ app.register(cors, {
 app.register(jwt, {
   secret: 'spacetime', //uma forma de diferenciar os jwts gerados desse backend de outros backends, pode colocar QUALQUER coisa, mas como estamos em dev pode ser só isso msm
 })
+app.register(statusRoutes)
 app.register(authRoutes)
 app.register(uploadRoutes)
 app.register(memoriesRoutes)
