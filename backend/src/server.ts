@@ -37,5 +37,5 @@ app
     port: process.env.PORT ? Number(process.env.PORT) : 3333,
     host: '0.0.0.0', // pra funcionar no mobile
   }).then(() => {
-    console.log('🚀 HTTP server running oh http://localhost:3333')
+    console.log('🚀 HTTP server running')
   })
