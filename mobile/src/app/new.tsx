@@ -65,6 +65,9 @@ export default function NewMemory() {
     })
 
     router.push('/memories')
+    setPreview(null)
+    setContent('')
+    setIsPublic(false)
   }
 
   return (
