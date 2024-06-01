@@ -6,6 +6,7 @@ const nextConfig = {
       '192.168.2.200',
       'localhost',
       'rocketseat-nlw12-backend.onrender.com',
+      'i.ibb.co'
     ]
   }
 };

@@ -1,11 +1,12 @@
 'use client'
 
-import { Camera } from "lucide-react";
-import { MediaPicker } from "./MediaPicker";
-import { FormEvent } from "react";
-import Cookie from 'js-cookie';
 import { api } from "@/lib/api";
+import { uploadImage } from "@/utils/uploadImage";
+import Cookie from 'js-cookie';
+import { Camera } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
+import { MediaPicker } from "./MediaPicker";
 
 export const NewMemoryForm = () => {
   const router = useRouter()
@@ -20,12 +21,7 @@ export const NewMemoryForm = () => {
     let coverUrl = ''
 
     if (fileToUpload) {
-      const uploadFormData = new FormData()
-      uploadFormData.set('file', fileToUpload)
-
-      const uploadResponse = await api.post('/upload', uploadFormData)
-
-      coverUrl = uploadResponse.data.fileUrl
+      coverUrl = await uploadImage(fileToUpload)
     }
 
     const token = Cookie.get('token')
