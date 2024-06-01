@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "build": "tsc && prisma generate && prisma migrate deploy",
     "lint": "eslint src --ext .ts --fix"
   },
   "keywords": [],
