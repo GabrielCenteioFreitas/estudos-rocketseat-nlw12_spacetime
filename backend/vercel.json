@@ -11,5 +11,8 @@
       "src": "(.*)",
       "dest": "src/server.ts"
     }
-  ]
+  ],
+  "buildCommand": "npm run build && npx prisma migrate deploy && npx prisma generate",
+  "installCommand": "npm ci",
+  "outputDirectory": "dist"
 }
