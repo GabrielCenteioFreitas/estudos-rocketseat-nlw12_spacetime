@@ -11,6 +11,5 @@
       "src": "(.*)",
       "dest": "src/server.ts"
     }
-  ],
-  "buildCommand": "npm run build && prisma migrate deploy"
+  ]
 }
