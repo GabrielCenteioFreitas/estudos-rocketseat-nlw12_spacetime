@@ -10,7 +10,8 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsup src",
     "start": "node dist/server.js",
-    "lint": "eslint src --ext .ts --fix"
+    "lint": "eslint src --ext .ts --fix",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
